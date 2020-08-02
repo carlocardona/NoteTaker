@@ -25,11 +25,21 @@ app.post('/api/notes', (req, res) => {
     notes.push(newNote);
     res.json(newNote);
 
+});
+
+/*
+
+//Delete method
+
+app.get('/api/notes/:id',(req,res) => {
+    const noteToDelete = req.params.
 })
+*/
+
 
 app.listen(PORT, () => {
     console.log('App listening...');
-})
+});
 
 /*
 
