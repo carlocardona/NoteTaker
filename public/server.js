@@ -1,14 +1,12 @@
 const express = require('express');
 const path = require('path');
-const db = require('../db/db.json');
+const dbNotes = require('../db/db.json');
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-const notes = [];
 
 //Basic Routes
 
@@ -23,16 +21,14 @@ app.get('/notes', (req, res) => {
 //Post New Note
 app.post('/api/notes', (req, res) => {
 
-    const newNote = req.body;
-
-    notes.push(newNote);
-    res.json(newNote);
+    dbNotes.push(req.body);
+    res.json(dbNotes);
 
 });
 
 //Shows All Notes
 app.get('/api/notes', (req, res) => {
-    return res.json(notes);
+    return res.json(dbNotes);
 });
 
 //Delete Notes
