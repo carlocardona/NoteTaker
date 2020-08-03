@@ -38,16 +38,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/assets/js/index.js"></script>
 
-  <script type='type/javascript'>
+  <!--Code Below-->
+  <script>
 
-    $("#save-btn").on("click",function(event){
+    $("#save-btn").on("click", function (event) {
       event.preventDefault();
+      console.log('Saving...')
       const newNote = {
         note: $('.note-textarea').val()
       };
 
-      $.post("/api/notes")
+      $.post("/api/notes", newNote)
+        .then(function (data) {
+          console.log('notes.html', data);
+          console.log('New note added.');
+        })
     })
+
+    $()
 
   </script>
 
