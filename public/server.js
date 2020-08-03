@@ -35,7 +35,7 @@ app.get('/api/notes', (req, res) => {
     return res.json(notes);
 });
 
-//Delete method
+//Delete Notes
 
 app.delete('/api/notes/:id', (req, res) => {
     console.log('Deleting Note...');
