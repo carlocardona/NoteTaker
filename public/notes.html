@@ -55,7 +55,10 @@
         })
     })
 
-    $()
+    $("#pen-btn").on("click", function (event) {
+      event.preventDefault();
+      console.log('Creating new note...');
+    })
 
   </script>
 
