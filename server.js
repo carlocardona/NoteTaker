@@ -26,25 +26,27 @@ app.post('/api/notes', (req, res) => {
     const currentID = dbNotes.length;
     const newID = currentID + 1;
     dbNotes.push({ newID, ...req.body });
-    res.json(dbNotes);
-
+    console.log('Notes Posted.');
+    return res.json(dbNotes);
 });
 
 ///Shows All Notes///
 app.get('/api/notes', (req, res) => {
     res.json(dbNotes);
+    console.log('Showing Notes.')
 });
 
 ///Delete Notes///
 
 app.delete('/api/notes/:id', (req, res) => {
 
-    const toDelete = req.params.id;
-    console.log('Deleting Note...');
+    const userChoice = req.params.id;
+
+    console.log('Note Deleted.');
 })
 
 /////Port Listener/////
 
 app.listen(PORT, () => {
-    console.log('App Listening...');
+    console.log('App Listening.');
 });
