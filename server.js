@@ -52,23 +52,27 @@ app.get('/api/notes', (req, res) => {
 ///Delete Notes///
 app.delete('/api/notes/:id', (req, res) => {
 
-    const userChoice = req.params.id; //user choice
+    const userChoice = req.params.id;
 
-    let toDelete = JSON.parse(dbNotes);//parse through json file
-
-    fs.readFile('./db/db.json', 'utf8', function (content) {
+    fs.readFile('./db/db.json', 'utf8', function (err, content) {
 
         notes = JSON.parse(content);
 
-        //iterate through array 
-        //find by id
-        //if notes === userchoice -> splice 
-        //then write out all of left over notes
+        for (let i = 0; notes.length; i++) {
+            if (notes[i].id === userChoice) {
+                notes.splice(i, 1);
+
+                fs.writeFile('./db/db.json', JSON.stringify(notes), function (err) {
+
+                    if (err) throw err;
+                    res.send(notes);
+                });
+            }
+        }
 
     });
 
-    //write back out all
-    console.log("userChoice Data " + userChoice);
+    console.log('userchoice-> ' + userChoice);
     console.log('Note Deleted.');
 })
 
