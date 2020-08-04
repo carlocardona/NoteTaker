@@ -26,8 +26,9 @@ app.post('/api/notes', (req, res) => {
     const currentID = dbNotes.length;
     const newID = currentID + 1;
     dbNotes.push({ newID, ...req.body });
-    console.log('Notes Posted.');
+    console.log('Notes Posted -> ' + newID + dbNotes);
     return res.json(dbNotes);
+
 });
 
 ///Shows All Notes///
@@ -40,8 +41,14 @@ app.get('/api/notes', (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
 
-    const userChoice = req.params.id;
+    const userChoice = req.params.id; //user choice
 
+    // let toDelete = JSON.parse(dbNotes);//parse through json file
+
+    // if userChoice === toDelete{
+    //     userChoice.splice(userChoice, 1);
+    // }
+    console.log("userChoice Data " + userChoice);
     console.log('Note Deleted.');
 })
 
